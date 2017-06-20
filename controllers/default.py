@@ -58,7 +58,9 @@ def call():
     """
     return service()
 
-def asf():
-	return 'asif'
-
+@auth.requires_login()
+def entry_post():
+    """returns a form where the can entry a post"""
+    form = SQLFORM(db.post).process()
+    return dict(form=form)
 
